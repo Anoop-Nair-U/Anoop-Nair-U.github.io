@@ -1,160 +1,192 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anoop Nair — Portfolio</title>
-
-  <!-- Tailwind Play CDN (no build step) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    /* small extra styling */
-    .rule { border-top: 1px solid #e6e9ef; margin-top: .45rem; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
-  <main class="min-h-screen flex items-start justify-center p-6">
-    <div class="w-full max-w-4xl bg-white rounded-2xl shadow-lg p-8">
-      <!-- Header -->
-      <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h1 class="text-3xl sm:text-4xl font-extrabold">ANOOP NAIR</h1>
-          <p class="mt-1 text-sm text-slate-500">Software Engineer — Backend, Embedded & ML</p>
-
-          <div class="mt-3 flex flex-wrap items-center gap-3 text-sm text-slate-600">
-            <a href="mailto:nairanoop413@gmail.com" class="inline-flex items-center gap-2 hover:text-slate-900">
-              <!-- mail svg -->
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8.5v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M3 8.5L12 14l9-5.5M21 6H3a2 2 0 0 0-2 2v0" /></svg>
-              nairanoop413@gmail.com
-            </a>
-
-            <a href="tel:+916382999714" class="inline-flex items-center gap-2 hover:text-slate-900">
-              <!-- phone svg -->
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M22 16.92V20a2 2 0 0 1-2.18 2A19.88 19.88 0 0 1 3 5.18 2 2 0 0 1 5 3h3.09a2 2 0 0 1 2 1.72c.12 1.21.46 2.4 1.03 3.5a2 2 0 0 1-.45 2.11L9.91 12.91a16 16 0 0 0 7.18 7.18l1.58-1.58a2 2 0 0 1 2.11-.45c1.1.57 2.29.91 3.5 1.03A2 2 0 0 1 22 16.92z"/></svg>
-              +91 63829 99714
-            </a>
-
-            <a href="https://www.linkedin.com/in/anoop-nair-u-11a145226" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 hover:text-slate-900">
-              <!-- linkedin svg -->
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-12h4v2a4 4 0 0 1 4-2zM2 9h4v12H2zM4 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg>
-              linkedin.com/in/anoop-nair-u
-            </a>
-
-            <a href="https://github.com/Anoop-Nair-U" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 hover:text-slate-900">
-              <!-- github svg -->
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 2a10 10 0 0 0-3.16 19.5c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.77.6-3.36-1.33-3.36-1.33-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.04 1.53 1.04.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.55 9.55 0 0 1 12 6.8c.85.004 1.7.11 2.5.32 1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
-              github.com/Anoop-Nair-U
-            </a>
-          </div>
-        </div>
-
-        <div class="flex-shrink-0 flex items-center gap-3">
-          <a href="/resume.pdf" class="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50">Download Resume</a>
-          <span class="text-sm text-slate-500">Kanyakumari, Tamil Nadu</span>
-        </div>
-      </header>
-
-      <div class="rule"></div>
-
-      <!-- Summary + Skills -->
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="md:col-span-2">
-          <h2 class="text-lg font-semibold">Summary</h2>
-          <p class="mt-2 text-slate-600">Result-driven Software Engineer with hands-on experience building Spring Boot microservices, Kafka streaming pipelines, and Android-based instrument clusters. Skilled in Java, Python, CAN bus integration, and applied ML for computer vision. Strong debugging, performance optimization, and cross-functional collaboration experience delivering production-ready solutions.</p>
-
-          <h3 class="mt-6 text-sm font-semibold text-slate-700">Selected Experience</h3>
-          <div class="mt-3 space-y-4 text-sm text-slate-700">
-            <div>
-              <div class="flex items-center justify-between">
-                <div>
-                  <div class="font-medium">Software Engineer — UST</div>
-                  <div class="text-xs text-slate-500">Aug 2023 – Present · Trivandrum, Kerala</div>
-                </div>
-              </div>
-              <ul class="mt-2 list-disc ml-5">
-                <li>Built CAN → Kafka streaming pipelines and Spring Boot microservices to process vehicle telemetry for real-time analytics.</li>
-                <li>Implemented 15-minute windowed aggregation and KPI calculations, optimized producers/consumers for throughput and low latency.</li>
-                <li>Debugged streaming issues using Log4j and system diagnostics; collaborated with hardware engineers for accurate CAN decoding.</li>
-              </ul>
-            </div>
-
-            <div>
-              <div class="font-medium">Intern – Embedded Software (Android + CAN)</div>
-              <div class="text-xs text-slate-500">Mar 2023 – Aug 2023</div>
-              <ul class="mt-2 list-disc ml-5">
-                <li>Developed Android instrument cluster UI using MVVM, integrated CAN telemetry over TCP and AIDL services for IPC.</li>
-                <li>Focused on performance and robust CAN message decoding across ECUs.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <aside class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-          <h3 class="text-sm font-semibold">Skills</h3>
-          <div class="mt-3 text-sm text-slate-700 space-y-2">
-            <p><span class="font-medium">Languages:</span> Java, Python, C, C++</p>
-            <p><span class="font-medium">Frameworks/Tools:</span> Spring Boot, Kafka, Hibernate, Log4j, Android (MVVM), AIDL</p>
-            <p><span class="font-medium">ML / Data:</span> TensorFlow, Keras, MySQL</p>
-            <p><span class="font-medium">Cloud / Infra:</span> GCP, Kubernetes, Linux</p>
-          </div>
-        </aside>
-      </div>
-
-      <!-- Projects -->
-      <section class="mt-8">
-        <h2 class="text-lg font-semibold">Selected Projects</h2>
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="p-4 rounded-lg border border-slate-100 bg-white">
-            <h4 class="font-medium">CAN → Kafka Streaming (VECV)</h4>
-            <p class="mt-2 text-sm text-slate-600">End-to-end pipeline to stream, aggregate and calculate vehicle KPIs. Implemented 15-min windowing and optimized for production throughput.</p>
-            <div class="mt-3 text-xs text-slate-500">Java · Kafka · Spring Boot · <a href="https://github.com/Anoop-Nair-U" class="underline" target="_blank">Code</a></div>
-          </div>
-
-          <div class="p-4 rounded-lg border border-slate-100 bg-white">
-            <h4 class="font-medium">CCTV Anomaly Detection</h4>
-            <p class="mt-2 text-sm text-slate-600">Desktop app with motion detection, CLAHE preprocessing and CNN-based anomaly classification.</p>
-            <div class="mt-3 text-xs text-slate-500">Python · OpenCV · TensorFlow · <a href="https://github.com/Anoop-Nair-U" class="underline" target="_blank">Repo</a></div>
-          </div>
-
-          <div class="p-4 rounded-lg border border-slate-100 bg-white">
-            <h4 class="font-medium">Android Instrument Cluster</h4>
-            <p class="mt-2 text-sm text-slate-600">Android UI with SVG assets and real-time telemetry updates, integrated AIDL services and CAN decoding.</p>
-            <div class="mt-3 text-xs text-slate-500">Java · Android · CAN · <a href="https://github.com/Anoop-Nair-U" class="underline" target="_blank">Repo</a></div>
-          </div>
-
-          <div class="p-4 rounded-lg border border-slate-100 bg-white">
-            <h4 class="font-medium">ECG Analysis App</h4>
-            <p class="mt-2 text-sm text-slate-600">Kivy GUI for loading .npy ECG files, peak detection and heart rate visualization.</p>
-            <div class="mt-3 text-xs text-slate-500">Python · NumPy · Kivy · <a href="https://github.com/Anoop-Nair-U" class="underline" target="_blank">Repo</a></div>
-          </div>
-        </div>
-      </section>
-
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <h2 class="text-lg font-semibold">Education</h2>
-          <div class="mt-3 text-sm text-slate-700">
-            <div class="font-medium">B.E. in Computer Science — Narayanaguru College of Engineering</div>
-            <div class="text-xs text-slate-500">2018 – 2022 · CGPA: 8.16</div>
-          </div>
-        </div>
-
-        <div>
-          <h2 class="text-lg font-semibold">Certifications</h2>
-          <ul class="mt-3 list-disc ml-5 text-sm text-slate-700">
-            <li>Java OOP — LinkedIn</li>
-            <li>Machine Learning in Python — Udemy</li>
-            <li>Python Programming — SoloLearn</li>
-          </ul>
-        </div>
-      </div>
-
-      <footer class="mt-8 border-t border-slate-100 pt-6 text-sm text-slate-500 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <div>Made with ♥ · Available for Junior Java / Embedded roles</div>
-        <div>Languages: English · Malayalam · Tamil · Hindi</div>
-      </footer>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">Anoop</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+	  <!-- Resume Button -->
+    <a href="https://drive.google.com/file/d/1mzzI9BbMXQP72YKFetpdVCA9UV-IiQA1/view?usp=drive_link" 
+       class="resume-btn" target="_blank">
+      Resume
+    </a>
+      <!-- Dark Mode Toggle -->
+      <button class="toggle-btn" id="darkToggle">🌙</button>
     </div>
-  </main>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero section-animate">
+    <div class="bg-shapes">
+      <div class="shape shape1"></div>
+      <div class="shape shape2"></div>
+      <div class="shape shape3"></div>
+    </div>
+    <div class="container">
+      <h1 class="hero-title fade-in-up">Hi, I'm <span>Anoop Nair</span></h1>
+      <p class="hero-subtitle fade-in-up delay-1">Software Engineer — Backend & Embedded Systems</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="section section-animate">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        Result-driven Software Engineer with hands-on experience in backend application development and 
+        embedded software solutions. Skilled in Core Java, Spring Boot, Kafka streaming pipelines, 
+        Android-based instrument clusters, and AI/ML applications. Passionate about building clean, 
+        efficient, and production-ready solutions.
+      </p>
+    </div>
+  </section>
+  
+    <!-- Experience Section -->
+  <section id="experience" class="section alt-bg section-animate">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="experience-grid">
+        <div class="exp-card">
+          <h3>Software Engineer — UST</h3>
+          <p class="time">Aug 2023 – Present · Trivandrum, Kerala</p>
+        </div>
+        <div class="exp-card">
+          <h3>Embedded Software Intern — UST</h3>
+          <p class="time">Mar 2023 – Aug 2023</p>
+        </div>
+        <div class="exp-card">
+          <h3>Software Developer Intern — Rpinnacle Solutions</h3>
+          <p class="time">Jul 2022 – Jan 2023 · Nagercoil, Tamil Nadu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Skills Section -->
+  <section id="skills" class="section section-animate">
+    <div class="container">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>Java / Spring Boot</li>
+        <li>Kafka Streaming</li>
+        <li>Python / TensorFlow / Keras</li>
+        <li>C / C++</li>
+        <li>Android (MVVM, AIDL)</li>
+        <li>REST APIs / Microservices</li>
+        <li>MySQL</li>
+        <li>Cloud: GCP, Kubernetes, Linux</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+<section id="projects" class="section alt-bg section-animate">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+
+      <!-- Kafka CAN Data Pipeline -->
+      <div class="project-card">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+            d="M12 20.5v-17m0 0l7 7m-7-7l-7 7" />
+        </svg>
+        <h3>Kafka CAN Data Pipeline</h3>
+      </div>
+
+      <!-- AI CCTV Monitoring App -->
+      <div class="project-card">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <circle cx="12" cy="12" r="3" stroke-width="1.5"/>
+          <path d="M2 12a10 10 0 0120 0 10 10 0 01-20 0z" stroke-width="1.5"/>
+        </svg>
+        <h3>AI CCTV Monitoring App</h3>
+      </div>
+
+      <!-- Android Instrument Cluster -->
+      <div class="project-card">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9 2a7 7 0 00-7 7v6a7 7 0 007 7h6a7 7 0 007-7V9a7 7 0 00-7-7H9zm3 4a5 5 0 110 10 5 5 0 010-10z"/>
+        </svg>
+        <h3>Android Instrument Cluster</h3>
+      </div>
+
+      <!-- ECG Analysis Application -->
+      <div class="project-card">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+            d="M4 12h3l2 5 4-10 2 5h5" />
+        </svg>
+        <h3>ECG Analysis Application</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="section alt-bg section-animate">
+  <div class="container">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 4h16v16H4z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 4l8 8 8-8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Email</h3>
+        <a href="mailto:nairanoop413@gmail.com">nairanoop413@gmail.com</a>
+      </div>
+
+      <div class="contact-card">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.7v2.2h.1c.5-.9 1.7-2.2 3.7-2.2 4 0 4.7 2.6 4.7 6V24h-4v-7.9c0-1.9 0-4.3-2.6-4.3-2.6 0-3 2-3 4.1V24h-4V8z"/>
+        </svg>
+        <h3>LinkedIn</h3>
+        <a href="https://linkedin.com/in/anoop-nair-u-11a145226" target="_blank">linkedin.com/in/anoop-nair-u</a>
+      </div>
+
+      <div class="contact-card">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.3-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.1-3.2 0-.3-.5-1.4.1-2.9 0 0 .9-.3 3 .9.9-.3 1.9-.4 2.9-.4 1 0 2 .1 2.9.4 2.1-1.2 3-.9 3-.9.6 1.5.1 2.6.1 2.9.7.9 1.1 1.9 1.1 3.2 0 4.5-2.7 5.5-5.3 5.8.4.3.8.9.8 1.9v2.9c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/>
+        </svg>
+        <h3>GitHub</h3>
+        <a href="https://github.com/Anoop-Nair-U" target="_blank">github.com/Anoop-Nair-U</a>
+      </div>
+
+      <div class="contact-card">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+            d="M22 16.92V20a2 2 0 01-2.18 2c-3.27-.36-6.42-1.9-9.06-4.54S6.36 8.45 6 5.18A2 2 0 018 3h3.09a2 2 0 012 1.72c.12 1.2.46 2.4 1.03 3.5a2 2 0 01-.45 2.11l-1.5 1.5a16 16 0 007.18 7.18l1.5-1.5a2 2 0 012.11-.45c1.1.57 2.3.91 3.5 1.03A2 2 0 0122 16.92z"/>
+        </svg>
+        <h3>Phone</h3>
+        <a href="tel:+916382999714">+91 63829 99714</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+  <script src="script.js"></script>
 </body>
 </html>
