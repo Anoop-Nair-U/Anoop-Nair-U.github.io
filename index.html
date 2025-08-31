@@ -5,27 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anoop Nair — Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="#home" class="logo">Anoop</a>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-	  <!-- Resume Button -->
-    <a href="https://drive.google.com/file/d/1mzzI9BbMXQP72YKFetpdVCA9UV-IiQA1/view?usp=drive_link" 
-       class="resume-btn" target="_blank">
-      Resume
-    </a>
-      <!-- Dark Mode Toggle -->
-      <button class="toggle-btn" id="darkToggle">🌙</button>
+      <button class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="https://drive.google.com/file/d/1mzzI9BbMXQP72YKFetpdVCA9UV-IiQA1/view?usp=drive_link" 
+             class="resume-btn" target="_blank">Resume</a>
+          <button class="toggle-btn" id="darkToggle">🌙</button>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -55,7 +60,7 @@
     </div>
   </section>
   
-    <!-- Experience Section -->
+  <!-- Experience Section -->
   <section id="experience" class="section alt-bg section-animate">
     <div class="container">
       <h2>Experience</h2>
@@ -76,7 +81,6 @@
     </div>
   </section>
 
-
   <!-- Skills Section -->
   <section id="skills" class="section section-animate">
     <div class="container">
@@ -95,97 +99,78 @@
   </section>
 
   <!-- Projects Section -->
-<section id="projects" class="section alt-bg section-animate">
-  <div class="container">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-
-      <!-- Kafka CAN Data Pipeline -->
-      <div class="project-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-            d="M12 20.5v-17m0 0l7 7m-7-7l-7 7" />
-        </svg>
-        <h3>Kafka CAN Data Pipeline</h3>
-      </div>
-
-      <!-- AI CCTV Monitoring App -->
-      <div class="project-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <section id="projects" class="section alt-bg section-animate">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 20.5v-17m0 0l7 7m-7-7l-7 7" />
+          </svg>
+          <h3>Kafka CAN Data Pipeline</h3>
+        </div>
+        <div class="project-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <circle cx="12" cy="12" r="3" stroke-width="1.5"/>
           <path d="M2 12a10 10 0 0120 0 10 10 0 01-20 0z" stroke-width="1.5"/>
         </svg>
-        <h3>AI CCTV Monitoring App</h3>
-      </div>
-
-      <!-- Android Instrument Cluster -->
-      <div class="project-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M9 2a7 7 0 00-7 7v6a7 7 0 007 7h6a7 7 0 007-7V9a7 7 0 00-7-7H9zm3 4a5 5 0 110 10 5 5 0 010-10z"/>
-        </svg>
-        <h3>Android Instrument Cluster</h3>
-      </div>
-
-      <!-- ECG Analysis Application -->
-      <div class="project-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <h3>AI CCTV Monitoring App</h3>
+        </div>
+        <div class="project-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 2a7 7 0 00-7 7v6a7 7 0 007 7h6a7 7 0 007-7V9a7 7 0 00-7-7H9zm3 4a5 5 0 110 10 5 5 0 010-10z"/>
+          </svg>
+          <h3>Android Instrument Cluster</h3>
+        </div>
+        <div class="project-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
             d="M4 12h3l2 5 4-10 2 5h5" />
         </svg>
-        <h3>ECG Analysis Application</h3>
+          <h3>ECG Analysis Application</h3>
+        </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- Contact Section -->
-<section id="contact" class="section alt-bg section-animate">
-  <div class="container">
-    <h2>Contact</h2>
-    <div class="contact-grid">
-
-      <div class="contact-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M4 4h16v16H4z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M4 4l8 8 8-8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h3>Email</h3>
-        <a href="mailto:nairanoop413@gmail.com">nairanoop413@gmail.com</a>
-      </div>
-
-      <div class="contact-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="currentColor" viewBox="0 0 24 24">
+  <!-- Contact Section -->
+  <section id="contact" class="section section-animate">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 4h16v16H4z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 4l8 8 8-8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Email</h3>
+          <a href="mailto:nairanoop413@gmail.com">nairanoop413@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="currentColor" viewBox="0 0 24 24">
           <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.7v2.2h.1c.5-.9 1.7-2.2 3.7-2.2 4 0 4.7 2.6 4.7 6V24h-4v-7.9c0-1.9 0-4.3-2.6-4.3-2.6 0-3 2-3 4.1V24h-4V8z"/>
         </svg>
         <h3>LinkedIn</h3>
-        <a href="https://linkedin.com/in/anoop-nair-u-11a145226" target="_blank">linkedin.com/in/anoop-nair-u</a>
-      </div>
-
-      <div class="contact-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <a href="https://linkedin.com/in/anoop-nair-u-11a145226" target="_blank">linkedin.com/in/anoop-nair-u</a>
+        </div>
+        <div class="contact-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.3-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.1-3.2 0-.3-.5-1.4.1-2.9 0 0 .9-.3 3 .9.9-.3 1.9-.4 2.9-.4 1 0 2 .1 2.9.4 2.1-1.2 3-.9 3-.9.6 1.5.1 2.6.1 2.9.7.9 1.1 1.9 1.1 3.2 0 4.5-2.7 5.5-5.3 5.8.4.3.8.9.8 1.9v2.9c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/>
         </svg>
         <h3>GitHub</h3>
-        <a href="https://github.com/Anoop-Nair-U" target="_blank">github.com/Anoop-Nair-U</a>
-      </div>
-
-      <div class="contact-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <a href="https://github.com/Anoop-Nair-U" target="_blank">github.com/Anoop-Nair-U</a>
+        </div>
+        <div class="contact-card">
+         <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
             d="M22 16.92V20a2 2 0 01-2.18 2c-3.27-.36-6.42-1.9-9.06-4.54S6.36 8.45 6 5.18A2 2 0 018 3h3.09a2 2 0 012 1.72c.12 1.2.46 2.4 1.03 3.5a2 2 0 01-.45 2.11l-1.5 1.5a16 16 0 007.18 7.18l1.5-1.5a2 2 0 012.11-.45c1.1.57 2.3.91 3.5 1.03A2 2 0 0122 16.92z"/>
         </svg>
         <h3>Phone</h3>
-        <a href="tel:+916382999714">+91 63829 99714</a>
+          <a href="tel:+916382999714">+91 63829 99714</a>
+        </div>
       </div>
-
     </div>
-  </div>
-</section>
-
-
-
+  </section>
 
   <script src="script.js"></script>
 </body>

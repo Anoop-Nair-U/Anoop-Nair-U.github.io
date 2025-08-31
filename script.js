@@ -1,9 +1,39 @@
-// Dark mode toggle
-const toggleBtn = document.getElementById("darkToggle");
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+// Toggle mobile menu
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+
+navToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
 });
+
+// Close mobile menu when clicking on a link
+const navLinks = document.querySelectorAll('.nav-links a');
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('active');
+  });
+});
+
+// Dark mode toggle
+const darkToggle = document.getElementById('darkToggle');
+
+darkToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  
+  if (document.body.classList.contains('dark')) {
+    darkToggle.textContent = '☀️';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    darkToggle.textContent = '🌙';
+    localStorage.setItem('theme', 'light');
+  }
+});
+
+// Check for saved theme preference
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark');
+  darkToggle.textContent = '☀️';
+}
 
 // Section entrance animation
 const sections = document.querySelectorAll(".section-animate");
@@ -16,14 +46,3 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.2 });
 
 sections.forEach(sec => observer.observe(sec));
-
-// Force scroll to top on refresh/reload
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-};
-
-// Or in case some browsers ignore above, also run on load
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => window.scrollTo(0, 0), 50);
-});
-
