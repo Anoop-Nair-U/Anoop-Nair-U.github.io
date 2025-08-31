@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* optional body reset */
+body { @apply bg-slate-50 text-slate-800; }
+
+/* dark theme base */
+.dark body { background-color: #0f172a; color: #cbd5e1; }
