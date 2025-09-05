@@ -650,6 +650,133 @@
       color: var(--primary);
     }
 
+    /* Video Section */
+    .video-section {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .video-container video.loaded {
+      opacity: 1;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      transition: opacity 0.5s ease;
+    }
+
+    .video-overlay h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .video-overlay h2::after {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    .video-overlay p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .play-btn {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+
+    .play-btn i {
+      color: white;
+      font-size: 1.8rem;
+      margin-left: 4px;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 12px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Video Controls */
+    .video-controls {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 15px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-container:hover .video-controls {
+      opacity: 1;
+    }
+
+    .control-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: var(--transition);
+      backdrop-filter: blur(5px);
+    }
+
+    .control-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .control-btn i {
+      color: white;
+      font-size: 1rem;
+    }
+
     /* Animations */
     @keyframes fadeInUp {
       from {
@@ -689,6 +816,10 @@
       
       .hero-subtitle {
         font-size: 1.3rem;
+      }
+      
+      .video-overlay h2 {
+        font-size: 2.5rem;
       }
     }
 
@@ -749,6 +880,23 @@
       .shape1, .shape2, .shape3 {
         display: none;
       }
+      
+      .video-section {
+        height: 60vh;
+      }
+      
+      .video-overlay h2 {
+        font-size: 2.2rem;
+      }
+      
+      .video-overlay p {
+        font-size: 1rem;
+      }
+      
+      .play-btn {
+        width: 60px;
+        height: 60px;
+      }
     }
 
     @media (max-width: 576px) {
@@ -770,6 +918,19 @@
       
       .exp-card, .project-card, .contact-card, .skill-category {
         padding: 2rem 1.5rem;
+      }
+      
+      .video-section {
+        height: 50vh;
+      }
+      
+      .video-overlay h2 {
+        font-size: 1.8rem;
+      }
+      
+      .play-btn {
+        width: 50px;
+        height: 50px;
       }
     }
   </style>
@@ -917,91 +1078,115 @@
     </div>
   </section>
 
+  <!-- Video Demo Section -->
+  <section class="video-section" id="video-demo">
+    <div class="video-container">
+      <video id="demoVideo" muted playsinline>
+        <!-- Replace with your actual video file -->
+        <source src="assets/videos/Android IC.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-controls">
+        <div class="control-btn" id="playPauseBtn">
+          <i class="fas fa-pause" id="playIcon"></i>
+        </div>
+        <div class="control-btn" id="muteBtn">
+          <i class="fas fa-volume-up" id="volumeIcon"></i>
+        </div>
+      </div>
+    </div>
+    <div class="video-overlay">
+      <h2>Intrument Cluster</h2>
+      <p>Watch a demo </p>
+      <div class="play-btn" id="playButton">
+        <i class="fas fa-play"></i>
+      </div>
+    </div>
+  </section>
+
   <!-- Projects Section -->
-<section id="projects" class="section alt-bg section-animate">
-  <div class="container">
-    <div class="section-heading">
-      <h2>Projects</h2>
+  <section id="projects" class="section alt-bg section-animate">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Projects</h2>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Kafka CAN Data Pipeline -->
+        <div class="project-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+              d="M12 20.5v-17m0 0l7 7m-7-7l-7 7" />
+          </svg>
+          <h3>Kafka CAN Data Pipeline</h3>
+          <p>Real-time data processing pipeline for automotive CAN bus data using Kafka streaming.</p>
+          <a href="https://github.com/Anoop-Nair-U/fleetvision-vehicle-monitoring" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
+        </div>
+
+        <!-- AI CCTV Monitoring App -->
+        <div class="project-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M2 12a10 10 0 0120 0 10 10 0 01-20 0z"/>
+            <circle cx="12" cy="12" r="3" stroke-width="1.5"/>
+          </svg>
+          <h3>AI CCTV Monitoring App</h3>
+          <p>Intelligent surveillance system with AI-powered threat detection and real-time alerts.</p>
+          <a href="https://github.com/Anoop-Nair-U/CCTV_Anomaliy_detection" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
+        </div>
+
+        <!-- Android Instrument Cluster -->
+        <div class="project-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M9 2a7 7 0 00-7 7v6a7 7 0 007 7h6a7 7 0 007-7V9a7 7 0 00-7-7H9zm3 4a5 5 0 110 10 5 5 0 010-10z"/>
+          </svg>
+          <h3>Android Instrument Cluster</h3>
+          <p>Custom Android-based digital instrument cluster for automotive applications.</p>
+          <a href="https://github.com/Anoop-Nair-U/MyClusterSVG" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
+        </div>
+
+        <!-- ECG Analysis Application -->
+        <div class="project-card">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+              d="M3 12h3l2-6 3 12 3-8 2 4h5" />
+          </svg>
+          <h3>ECG Analysis Application</h3>
+          <p>Medical application for ECG signal processing and cardiac abnormality detection.</p>
+          <a href="https://github.com/Anoop-Nair-U?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
+        </div>
+
+        <!-- Reservation Management -->
+        <div class="project-card">
+          <!-- calendar / reservation icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 3v4M8 3v4M3 11h18" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 17l2 2 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Reservation Management</h3>
+          <p>Reservation management system for bookings — UI + backend workflows and persistence.</p>
+          <a href="https://github.com/Anoop-Nair-U/Reservation-Management" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
+        </div>
+
+        <!-- ChatBot-UI (robot SVG) -->
+        <div class="project-card">
+          <!-- robot/chatbot icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <rect x="3" y="7" width="18" height="10" rx="2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="8" cy="12" r="1.2" fill="currentColor"/>
+            <circle cx="16" cy="12" r="1.2" fill="currentColor"/>
+            <path d="M9 16c1 0 1.5-1 3-1s2 1 3 1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7 4v2M17 4v2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="11" y="2" width="2" height="2" rx="0.5" fill="currentColor"/>
+          </svg>
+          <h3>ChatBot-UI</h3>
+          <p>AI-based ChatBot application — frontend UI for conversational interaction.</p>
+          <a href="https://github.com/Anoop-Nair-U/ChatBot-UI" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
+        </div>
+
+      </div>
     </div>
-    <div class="projects-grid">
-
-      <!-- Kafka CAN Data Pipeline -->
-      <div class="project-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-            d="M12 20.5v-17m0 0l7 7m-7-7l-7 7" />
-        </svg>
-        <h3>Kafka CAN Data Pipeline</h3>
-        <p>Real-time data processing pipeline for automotive CAN bus data using Kafka streaming.</p>
-        <a href="https://github.com/Anoop-Nair-U/fleetvision-vehicle-monitoring" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
-      </div>
-
-      <!-- AI CCTV Monitoring App -->
-      <div class="project-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M2 12a10 10 0 0120 0 10 10 0 01-20 0z"/>
-          <circle cx="12" cy="12" r="3" stroke-width="1.5"/>
-        </svg>
-        <h3>AI CCTV Monitoring App</h3>
-        <p>Intelligent surveillance system with AI-powered threat detection and real-time alerts.</p>
-        <a href="https://github.com/Anoop-Nair-U/CCTV_Anomaliy_detection" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
-      </div>
-
-      <!-- Android Instrument Cluster -->
-      <div class="project-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M9 2a7 7 0 00-7 7v6a7 7 0 007 7h6a7 7 0 007-7V9a7 7 0 00-7-7H9zm3 4a5 5 0 110 10 5 5 0 010-10z"/>
-        </svg>
-        <h3>Android Instrument Cluster</h3>
-        <p>Custom Android-based digital instrument cluster for automotive applications.</p>
-        <a href="https://github.com/Anoop-Nair-U/MyClusterSVG" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
-      </div>
-
-      <!-- ECG Analysis Application -->
-      <div class="project-card">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-            d="M3 12h3l2-6 3 12 3-8 2 4h5" />
-        </svg>
-        <h3>ECG Analysis Application</h3>
-        <p>Medical application for ECG signal processing and cardiac abnormality detection.</p>
-        <a href="https://github.com/Anoop-Nair-U?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
-      </div>
-
-      <!-- Reservation Management -->
-      <div class="project-card">
-        <!-- calendar / reservation icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-          <rect x="3" y="5" width="18" height="16" rx="2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M16 3v4M8 3v4M3 11h18" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M8 17l2 2 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h3>Reservation Management</h3>
-        <p>Reservation management system for bookings — UI + backend workflows and persistence.</p>
-        <a href="https://github.com/Anoop-Nair-U/Reservation-Management" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
-      </div>
-
-      <!-- ChatBot-UI (robot SVG) -->
-      <div class="project-card">
-        <!-- robot/chatbot icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-          <rect x="3" y="7" width="18" height="10" rx="2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="8" cy="12" r="1.2" fill="currentColor"/>
-          <circle cx="16" cy="12" r="1.2" fill="currentColor"/>
-          <path d="M9 16c1 0 1.5-1 3-1s2 1 3 1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M7 4v2M17 4v2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="11" y="2" width="2" height="2" rx="0.5" fill="currentColor"/>
-        </svg>
-        <h3>ChatBot-UI</h3>
-        <p>AI-based ChatBot application — frontend UI for conversational interaction.</p>
-        <a href="https://github.com/Anoop-Nair-U/ChatBot-UI" target="_blank" rel="noopener noreferrer" class="btn">View Project</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
+  </section>
 
   <!-- Contact Section -->
   <section id="contact" class="section section-animate">
@@ -1027,7 +1212,7 @@
         </div>
         <div class="contact-card">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.3-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.1-3.2 0-.3-.5-1.4.1-2.9 0 0 .9-.3 3 .9 .9-.3 1.9-.4 2.9-.4 1 0 2 .1 2.9.4 2.1-1.2 3-.9 3-.9.6 1.5.1 2.6.1 2.9.7.9 1.1 1.9 1.1 3.2 0 4.5-2.7 5.5-5.3 5.8.4.3.8.9.8 1.9v2.9c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/>
+            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2-.7-3.9-1.5-3.9-1.5-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.3-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.1-3.2 0-.3-.5-1.4.1-2.9 0 0 .9-.3 3 .9 .9-.3 1.9-.4 2.9-.4 1 0 2 .1 2.9 .4 2.1-1.2 3-.9 3-.9.6 1.5.1 2.6.1 2.9.7.9 1.1 1.9 1.1 3.2 0 4.5-2.7 5.5-5.3 5.8.4.3.8.9.8 1.9v2.9c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/>
           </svg>
           <h3>GitHub</h3>
           <a href="https://github.com/Anoop-Nair-U" target="_blank">github.com/Anoop-Nair-U</a>
@@ -1102,6 +1287,103 @@
     document.querySelectorAll('.section-animate').forEach(section => {
       observer.observe(section);
     });
+    
+    // Video functionality
+    const demoVideo = document.getElementById('demoVideo');
+    const playButton = document.getElementById('playButton');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playIcon = document.getElementById('playIcon');
+    const muteBtn = document.getElementById('muteBtn');
+    const volumeIcon = document.getElementById('volumeIcon');
+    const videoOverlay = document.querySelector('.video-overlay');
+    const videoSection = document.getElementById('video-demo');
+    
+    // Preload video and show when ready
+    demoVideo.addEventListener('loadeddata', function() {
+      demoVideo.classList.add('loaded');
+    });
+    
+    // Play/Pause functionality
+    function togglePlayPause() {
+      if (demoVideo.paused) {
+        demoVideo.play();
+        playIcon.classList.remove('fa-play');
+        playIcon.classList.add('fa-pause');
+        videoOverlay.style.opacity = '0';
+        setTimeout(() => {
+          videoOverlay.style.display = 'none';
+        }, 300);
+      } else {
+        demoVideo.pause();
+        playIcon.classList.remove('fa-pause');
+        playIcon.classList.add('fa-play');
+        videoOverlay.style.display = 'flex';
+        setTimeout(() => {
+          videoOverlay.style.opacity = '1';
+        }, 10);
+      }
+    }
+    
+    // Mute/Unmute functionality
+    function toggleMute() {
+      demoVideo.muted = !demoVideo.muted;
+      if (demoVideo.muted) {
+        volumeIcon.classList.remove('fa-volume-up');
+        volumeIcon.classList.add('fa-volume-mute');
+      } else {
+        volumeIcon.classList.remove('fa-volume-mute');
+        volumeIcon.classList.add('fa-volume-up');
+      }
+    }
+    
+    // Event listeners
+    playButton.addEventListener('click', () => {
+      togglePlayPause();
+    });
+    
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    muteBtn.addEventListener('click', toggleMute);
+    
+    // Hide overlay when video starts playing
+    demoVideo.addEventListener('play', () => {
+      videoOverlay.style.opacity = '0';
+      setTimeout(() => {
+        videoOverlay.style.display = 'none';
+      }, 300);
+    });
+    
+    // Show overlay when video ends
+    demoVideo.addEventListener('ended', () => {
+      videoOverlay.style.display = 'flex';
+      setTimeout(() => {
+        videoOverlay.style.opacity = '1';
+      }, 10);
+      playIcon.classList.remove('fa-pause');
+      playIcon.classList.add('fa-play');
+    });
+    
+    // Auto-play video when scrolled into view
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Auto-play when 50% of the video is in view
+          demoVideo.play();
+          videoOverlay.style.opacity = '0';
+          setTimeout(() => {
+            videoOverlay.style.display = 'none';
+          }, 300);
+          playIcon.classList.remove('fa-play');
+          playIcon.classList.add('fa-pause');
+        } else {
+          // Pause when not in view
+          demoVideo.pause();
+          playIcon.classList.remove('fa-pause');
+          playIcon.classList.add('fa-play');
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    videoObserver.observe(videoSection);
   </script>
 </body>
 </html>
