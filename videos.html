@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Demos | Anoop Nair</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --accent: #8b5cf6;
+            --text: #e2e8f0;
+            --text-light: #94a3b8;
+            --bg: #0f172a;
+            --bg-alt: #1e293b;
+            --card-bg: #1e293b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 20px 45px -10px rgba(0, 0, 0, 0.4);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Light mode variables */
+        .light-mode {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --accent: #8b5cf6;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --bg-alt: #e2e8f0;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 45px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .light-mode .navbar {
+            background: rgba(248, 250, 252, 0.8);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .back-btn {
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        /* Hero Section with Vanta.js */
+        .cinematic-hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Video Demos Section */
+        .demos-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .video-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 6rem;
+            align-items: center;
+        }
+
+        .video-demo:nth-child(even) .demo-player {
+            order: 2;
+        }
+
+        .demo-player {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+            height: 400px;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-player:hover {
+            transform: translateY(-5px);
+        }
+
+        .demo-player video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-poster {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 0 0 15px rgba(59, 130, 246, 0.3);
+            z-index: 2;
+        }
+
+        .play-btn i {
+            color: white;
+            font-size: 2.5rem;
+            margin-left: 5px;
+        }
+
+        .play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 0 18px rgba(59, 130, 246, 0.4);
+        }
+
+        .demo-info {
+            padding: 2rem;
+        }
+
+        .demo-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .demo-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-pill {
+            padding: 0.5rem 1.2rem;
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+        }
+
+        .light-mode .tech-pill {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .demo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .demo-link:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            gap: 0.8rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-alt);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-text {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .video-demo {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .video-demo:nth-child(even) .demo-player {
+                order: 0;
+            }
+            
+            .demo-player {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .demo-title {
+                font-size: 1.8rem;
+            }
+            
+            .demo-player {
+                height: 300px;
+            }
+            
+            .play-btn {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .play-btn i {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .demo-title {
+                font-size: 1.6rem;
+            }
+            
+            .demo-description {
+                font-size: 1rem;
+            }
+            
+            .demo-player {
+                height: 250px;
+            }
+            
+            .play-btn {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .nav-right {
+                gap: 1rem;
+            }
+            
+            .back-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Anoop</a>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle">🌙</button>
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Vanta.js -->
+    <section class="cinematic-hero">
+        <div id="vanta-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Project</h1>
+            <p class="hero-subtitle">Experience my work through cinematic visual demonstrations</p>
+        </div>
+    </section>
+
+    <!-- Video Demos Section -->
+    <section class="demos-container">
+        <h2 class="section-title">Featured Projects</h2>
+        
+        
+        <!-- Project 2 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Android Instrument Cluster" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/Android IC.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">Android Instrument Cluster</h3>
+                <p class="demo-description">
+                    A custom Android-based digital instrument cluster for automotive applications. 
+                    This project features real-time data visualization, customizable interfaces, 
+                    and seamless integration with vehicle systems for an enhanced driving experience.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-pill">Android</span>
+                    <span class="tech-pill">Kotlin</span>
+                    <span class="tech-pill">MVVM</span>
+                    <span class="tech-pill">AIDL</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/MyClusterSVG" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AI CCTV Monitoring System" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/CCTV Demo.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">AI CCTV Monitoring System</h3>
+                <p class="demo-description">
+                    An intelligent surveillance system with AI-powered threat detection and real-time alerts.
+                    This solution uses computer vision algorithms to identify suspicious activities,
+                    generate automated alerts, and provide actionable insights for security personnel.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">TensorFlow</span>
+                    <span class="tech-pill">OpenCV</span>
+                    <span class="tech-pill">Tkinter</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/CCTV_Anomaliy_detection" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+		
+		<!-- Project 4 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ECG Analysis Application" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/ECG.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">ECG Analysis Application</h3>
+                <p class="demo-description">
+                    A desktop tool built with Python and Kivy for analyzing ECG signals. 
+					The application processes .npy ECG files, detects R-peaks, calculates heart rate, and visualizes ECG waveforms in real-time. 
+					It provides an interactive interface for medical data exploration and basic cardiac health monitoring.
+                </p>
+                 <div class="tech-stack">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Kivy</span>
+                    <span class="tech-pill">NumPy</span>
+                    <span class="tech-pill">SciPy</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U?tab=repositories" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+		
+		<!-- Project 5 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reservation Management" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/Taste of Divine Demo.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">Reservation Management</h3>
+                <p class="demo-description">
+                    A web-based application designed to handle reservations efficiently.
+					It supports booking, updating, and canceling reservations with real-time availability tracking,
+					user-friendly interfaces, and secure data handling for smooth management of customer reservations
+                </p>
+                 <div class="tech-stack">
+                    <span class="tech-pill">Java</span>
+                    <span class="tech-pill">FlatLaf</span>
+                    <span class="tech-pill">MySQL</span>
+                    <span class="tech-pill">Maven</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/Reservation-Management" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+		
+		<!-- Project 6 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ChatBot" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/ChatBot.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">ChatBot</h3>
+                <p class="demo-description">
+                    An AI-powered conversational assistant that processes user queries and provides intelligent responses. 
+					Built with natural language processing (NLP) techniques,it supports real-time interaction and can be 
+					customized for multiple domains like customer support or personal assistance.
+                </p>
+                 <div class="tech-stack">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">TensorFlow</span>
+                    <span class="tech-pill">NLTK</span>
+                    <span class="tech-pill">Flask</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/ChatBot-UI" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+		
+		<!-- Project 1 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kafka CAN Data Pipeline" class="video-poster">
+                <video muted loop>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-server-racks-in-a-dark-datacenter-12109-large.mp4" type="video/mp4">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">Kafka CAN Data Pipeline</h3>
+                <p class="demo-description">
+                    A real-time data processing pipeline for automotive CAN bus data using Kafka streaming. 
+                    This system processes high-volume vehicle data with low latency, enabling real-time 
+                    analytics and monitoring for fleet management and predictive maintenance.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-pill">Java</span>
+                    <span class="tech-pill">Kafka</span>
+                    <span class="tech-pill">Spring Boot</span>
+                    <span class="tech-pill">Docker</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/fleetvision-vehicle-monitoring" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Interested in working together? I'm always open to discussing new projects</p>
+            <div class="social-links">
+                <a href="https://github.com/Anoop-Nair-U" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/anoop-nair-u-11a145226" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:nairanoop413@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2023 Anoop Nair. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+            // Initialize Vanta with dark colors
+            initVanta('dark');
+        } else if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+            themeToggle.textContent = '🌙';
+            // Initialize Vanta with light colors
+            initVanta('light');
+        } else {
+            // Default to dark mode
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+            themeToggle.textContent = '☀️';
+            initVanta('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-mode')) {
+                document.body.classList.replace('dark-mode', 'light-mode');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+                initVanta('light');
+            } else {
+                document.body.classList.replace('light-mode', 'dark-mode');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+                initVanta('dark');
+            }
+        });
+        
+        // Initialize Vanta.js with appropriate colors based on theme
+        function initVanta(theme) {
+            // Remove existing Vanta instance if any
+            if (window.vantaEffect) {
+                window.vantaEffect.destroy();
+            }
+            
+            const color1 = theme === 'dark' ? 0x3b82f6 : 0x2563eb;
+            const color2 = theme === 'dark' ? 0x8b5cf6 : 0x4f46e5;
+            const bgColor = theme === 'dark' ? 0x0f172a : 0xf8fafc;
+            
+            window.vantaEffect = VANTA.GLOBE({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: color1,
+                color2: color2,
+                backgroundColor: bgColor,
+                size: 0.8
+            });
+        }
+
+        // Video play functionality
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const player = this.parentElement;
+                const video = player.querySelector('video');
+                const poster = player.querySelector('.video-poster');
+                const icon = this.querySelector('i');
+                
+                if (video.paused) {
+                    video.play();
+                    poster.style.opacity = '0';
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                } else {
+                    video.pause();
+                    poster.style.opacity = '1';
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                }
+            });
+        });
+
+        // Reset videos when another is played
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('play', function() {
+                document.querySelectorAll('video').forEach(otherVideo => {
+                    if (otherVideo !== video && !otherVideo.paused) {
+                        otherVideo.pause();
+                        const otherPlayer = otherVideo.parentElement;
+                        otherPlayer.querySelector('.video-poster').style.opacity = '1';
+                        otherPlayer.querySelector('.play-btn i').classList.remove('fa-pause');
+                        otherPlayer.querySelector('.play-btn i').classList.add('fa-play');
+                    }
+                });
+            });
+            
+            video.addEventListener('ended', function() {
+                this.currentTime = 0;
+                const player = this.parentElement;
+                player.querySelector('.video-poster').style.opacity = '1';
+                player.querySelector('.play-btn i').classList.remove('fa-pause');
+                player.querySelector('.play-btn i').classList.add('fa-play');
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                if (document.body.classList.contains('dark-mode')) {
+                    navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+                } else {
+                    navbar.style.background = 'rgba(248, 250, 252, 0.95)';
+                }
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                if (document.body.classList.contains('dark-mode')) {
+                    navbar.style.background = 'rgba(15, 23, 42, 0.8)';
+                } else {
+                    navbar.style.background = 'rgba(248, 250, 252, 0.8)';
+                }
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.2)';
+            }
+        });
+
+        // Auto-play videos when they come into view
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const player = entry.target;
+                const video = player.querySelector('video');
+                const poster = player.querySelector('.video-poster');
+                const playBtn = player.querySelector('.play-btn i');
+                
+                if (entry.isIntersecting) {
+                    // Play the video when it's in view
+                    video.play().then(() => {
+                        poster.style.opacity = '0';
+                        playBtn.classList.remove('fa-play');
+                        playBtn.classList.add('fa-pause');
+                    }).catch(error => {
+                        console.log('Auto-play was prevented:', error);
+                        // Handle cases where auto-play might be blocked by browser policies
+                    });
+                } else {
+                    // Pause the video when it's out of view
+                    video.pause();
+                    poster.style.opacity = '1';
+                    playBtn.classList.remove('fa-pause');
+                    playBtn.classList.add('fa-play');
+                }
+            });
+        }, { threshold: 0.7 }); // Play when 70% of the video player is visible
+
+        // Observe all demo players for auto-play
+        document.querySelectorAll('.demo-player').forEach(player => {
+            videoObserver.observe(player);
+        });
+
+        // Add loop attribute to all videos for continuous playback
+        document.querySelectorAll('video').forEach(video => {
+            video.loop = true;
+        });
+    </script>
+</body>
+</html>

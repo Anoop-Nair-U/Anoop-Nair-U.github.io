@@ -6,6 +6,8 @@
   <title>Anoop Nair — Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
   <style>
     /* Modern CSS Reset & Variables */
     :root {
@@ -217,54 +219,15 @@
       align-items: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
     }
 
-    .bg-shapes {
+    .vanta-background {
       position: absolute;
-      inset: 0;
-      overflow: hidden;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
-    }
-
-    .shape {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.1;
-      animation: float 8s ease-in-out infinite;
-      filter: blur(40px);
-    }
-
-    .shape1 {
-      width: 400px;
-      height: 400px;
-      background: var(--primary);
-      top: 10%;
-      left: 10%;
-      animation-delay: 0s;
-    }
-
-    .shape2 {
-      width: 300px;
-      height: 300px;
-      background: var(--accent);
-      bottom: 15%;
-      right: 15%;
-      animation-delay: 2s;
-    }
-
-    .shape3 {
-      width: 250px;
-      height: 250px;
-      background: var(--primary-light);
-      bottom: 25%;
-      left: 25%;
-      animation-delay: 4s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-20px) scale(1.05); }
     }
 
     .hero-content {
@@ -287,7 +250,7 @@
 
     .hero-subtitle {
       font-size: 1.5rem;
-      color: var(--text-light);
+      color: var(--text);
       margin-bottom: 2.5rem;
       animation: fadeInUp 0.8s ease-out 0.2s forwards;
       opacity: 0;
@@ -877,10 +840,6 @@
         padding: 4rem 0;
       }
       
-      .shape1, .shape2, .shape3 {
-        display: none;
-      }
-      
       .video-section {
         height: 60vh;
       }
@@ -983,16 +942,12 @@
 
   <!-- Hero Section -->
   <header id="home" class="hero">
-    <div class="bg-shapes">
-      <div class="shape shape1"></div>
-      <div class="shape shape2"></div>
-      <div class="shape shape3"></div>
-    </div>
+    <div class="vanta-background" id="vanta-birds"></div>
     <div class="container hero-content">
       <h1 class="hero-title">Hi, I'm Anoop Nair</h1>
       <p class="hero-subtitle">Software Engineer — Backend Developer</p>
       <div class="hero-cta">
-        <a href="#projects" class="btn">View My Work</a>
+        <a href="videos.html" class="btn">View My Work</a>
       </div>
     </div>
   </header>
@@ -1230,6 +1185,39 @@
   </section>
 
   <script>
+    // Initialize Vanta.js birds effect
+    let vantaEffect;
+    
+    function initVanta() {
+      // Check if vanta effect already exists and destroy it
+      if (vantaEffect) {
+        vantaEffect.destroy();
+      }
+      
+      // Initialize with appropriate colors based on theme
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      
+      vantaEffect = VANTA.BIRDS({
+        el: "#vanta-birds",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: isDarkMode ? 0x0f172a : 0xf8fafc,
+        color1: isDarkMode ? 0x3b82f6 : 0x2563eb,
+        color2: isDarkMode ? 0xa78bfa : 0x8b5cf6,
+        birdSize: isDarkMode ? 1.00 : 0.80,
+        wingSpan: isDarkMode ? 20.00 : 15.00,
+        speedLimit: isDarkMode ? 5.00 : 3.00,
+        separation: isDarkMode ? 50.00 : 30.00,
+        alignment: isDarkMode ? 50.00 : 30.00,
+        cohesion: isDarkMode ? 50.00 : 30.00
+      });
+    }
+    
     // Toggle mobile menu
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
@@ -1261,6 +1249,9 @@
         darkToggle.textContent = '🌙';
         localStorage.setItem('theme', 'light');
       }
+      
+      // Reinitialize Vanta with new colors
+      initVanta();
     });
     
     // Check for saved theme preference
@@ -1268,6 +1259,17 @@
       document.body.classList.add('dark-mode');
       darkToggle.textContent = '☀️';
     }
+    
+    // Initialize Vanta effect on page load
+    window.addEventListener('load', () => {
+      initVanta();
+    });
+    
+    // Adjust Vanta effect on window resize
+    window.addEventListener('resize', () => {
+      // Reinitialize Vanta to adjust to new window size
+      initVanta();
+    });
     
     // Scroll animations
     const observerOptions = {
