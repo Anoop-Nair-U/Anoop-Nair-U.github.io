@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Demos | Anoop Nair</title>
+    <link rel="stylesheet" href="videos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Anoop</a>
+            <div class="nav-right">
+                <button id="themeToggle" class="theme-toggle">🌙</button>
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Vanta.js -->
+    <section class="cinematic-hero">
+        <div id="vanta-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Project</h1>
+            <p class="hero-subtitle">Experience my work through cinematic visual demonstrations</p>
+        </div>
+    </section>
+
+    <!-- Video Demos Section -->
+    <section class="demos-container">
+        <h2 class="section-title">Featured Projects</h2>
+        
+        <!-- Project 1 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Android Instrument Cluster" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/Android IC.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">Android Instrument Cluster</h3>
+                <p class="demo-description">
+                    A custom Android-based digital instrument cluster for automotive applications. 
+                    This project features real-time data visualization, customizable interfaces, 
+                    and seamless integration with vehicle systems for an enhanced driving experience.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-pill">Android</span>
+                    <span class="tech-pill">Kotlin</span>
+                    <span class="tech-pill">MVVM</span>
+                    <span class="tech-pill">AIDL</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/MyClusterSVG" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AI CCTV Monitoring System" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/CCTV Demo.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">AI CCTV Monitoring System</h3>
+                <p class="demo-description">
+                    An intelligent surveillance system with AI-powered threat detection and real-time alerts.
+                    This solution uses computer vision algorithms to identify suspicious activities,
+                    generate automated alerts, and provide actionable insights for security personnel.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">TensorFlow</span>
+                    <span class="tech-pill">OpenCV</span>
+                    <span class="tech-pill">Tkinter</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/CCTV_Anomaliy_detection" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+		
+		<!-- Project 3 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reservation Management" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/Taste of Divine Demo.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">Reservation Management</h3>
+                <p class="demo-description">
+                    A web-based application designed to handle reservations efficiently.
+					It supports booking, updating, and canceling reservations with real-time availability tracking,
+					user-friendly interfaces, and secure data handling for smooth management of customer reservations
+                </p>
+                 <div class="tech-stack">
+                    <span class="tech-pill">Java</span>
+                    <span class="tech-pill">FlatLaf</span>
+                    <span class="tech-pill">MySQL</span>
+                    <span class="tech-pill">Maven</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/Reservation-Management" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+		
+		<!-- Project 4 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kafka CAN Data Pipeline" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/FleetFly Demo.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">Kafka CAN Data Pipeline</h3>
+                <p class="demo-description">
+                    A real-time data processing pipeline for automotive CAN bus data using Kafka streaming. 
+                    This system processes high-volume vehicle data with low latency, enabling real-time 
+                    analytics and monitoring for fleet management and predictive maintenance.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-pill">Java</span>
+                    <span class="tech-pill">Kafka</span>
+                    <span class="tech-pill">Spring Boot</span>
+                    <span class="tech-pill">Docker</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/fleetvision-vehicle-monitoring" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+		
+		<!-- Project 5 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ECG Analysis Application" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/ECG.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">ECG Analysis Application</h3>
+                <p class="demo-description">
+                    A desktop tool built with Python and Kivy for analyzing ECG signals. 
+					The application processes .npy ECG files, detects R-peaks, calculates heart rate, and visualizes ECG waveforms in real-time. 
+					It provides an interactive interface for medical data exploration and basic cardiac health monitoring.
+                </p>
+                 <div class="tech-stack">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Kivy</span>
+                    <span class="tech-pill">NumPy</span>
+                    <span class="tech-pill">SciPy</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U?tab=repositories" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+		
+		<!-- Project 6 -->
+        <div class="video-demo">
+            <div class="demo-player">
+                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ChatBot" class="video-poster">
+                <video muted loop>
+                    <source src="assets/videos/ChatBot.webm" type="video/webm">
+                </video>
+                <div class="play-btn">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="demo-info">
+                <h3 class="demo-title">ChatBot</h3>
+                <p class="demo-description">
+                    An AI-powered conversational assistant that processes user queries and provides intelligent responses. 
+					Built with natural language processing (NLP) techniques,it supports real-time interaction and can be 
+					customized for multiple domains like customer support or personal assistance.
+                </p>
+                 <div class="tech-stack">
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">TensorFlow</span>
+                    <span class="tech-pill">NLTK</span>
+                    <span class="tech-pill">Flask</span>
+                </div>
+                <a href="https://github.com/Anoop-Nair-U/ChatBot-UI" target="_blank" class="demo-link">
+                    View Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Interested in working together? I'm always open to discussing new projects</p>
+            <div class="social-links">
+                <a href="https://github.com/Anoop-Nair-U" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/anoop-nair-u-11a145226" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:nairanoop413@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2023 Anoop Nair. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="videos.js"></script>
+</body>
+</html>
